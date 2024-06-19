@@ -35,13 +35,14 @@ PRINT_ELEMENT() {
 
     echo "The element with atomic number $ATOMIC_NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $ATOMIC_MASS amu. $NAME has a melting point of $MELTING_POINT_CELSIUS celsius and a boiling point of $BOILING_POINT_CELSIUS celsius."
   fi
-  
+
 }
 
 FIX_DB() {
   # You should rename the weight column to atomic_mass
   RENAME_PROPERTIES_WEIGHT=$($PSQL "ALTER TABLE properties RENAME COLUMN weight TO atomic_mass;")
   echo "RENAME_PROPERTIES_WEIGHT                    : $RENAME_PROPERTIES_WEIGHT"
+
 
   # You should rename the melting_point column to melting_point_celsius and the boiling_point column to boiling_point_celsius
   RENAME_PROPERTIES_MELTING_POINT=$($PSQL"ALTER TABLE properties RENAME COLUMN melting_point TO melting_point_celsius;")
