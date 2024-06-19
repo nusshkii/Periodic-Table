@@ -14,7 +14,7 @@ MAIN_PROGRAM() {
 PRINT_ELEMENT() {
   INPUT=$1
   if [[ ! $INPUT =~ ^[0-9]+$ ]]
-  
+
   then
     ATOMIC_NUMBER=$(echo $($PSQL "SELECT atomic_number FROM elements WHERE symbol='$INPUT' OR name='$INPUT';") | sed 's/ //g')
   else
@@ -35,6 +35,7 @@ PRINT_ELEMENT() {
 
     echo "The element with atomic number $ATOMIC_NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $ATOMIC_MASS amu. $NAME has a melting point of $MELTING_POINT_CELSIUS celsius and a boiling point of $BOILING_POINT_CELSIUS celsius."
   fi
+  
 }
 
 FIX_DB() {
